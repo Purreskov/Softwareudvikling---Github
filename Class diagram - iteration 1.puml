@@ -1,0 +1,27 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class "Persons" as persons
+persons : name
+persons : age
+persons : address
+persons : phone number
+
+class "Patient" as patient
+class "Doctor" as doctor
+class "Nurse" as nurse
+class "Health professional" as HP
+HP : Profession ID
+HP : Work ID
+class "Non health professionals" as NHP
+
+
+persons <-- HP
+persons <-- NHP
+NHP <-- patient
+HP <-- doctor
+HP <-- nurse
+
+
+
+@enduml
