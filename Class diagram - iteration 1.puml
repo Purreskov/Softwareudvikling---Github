@@ -1,7 +1,7 @@
 @startuml
 'https://plantuml.com/class-diagram
 
-class "Penis" as persons
+class "Persons" as persons
 persons : name: String
 persons : age: Int
 persons : address
