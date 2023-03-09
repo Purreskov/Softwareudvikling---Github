@@ -1,6 +1,6 @@
 @startuml
 left to right direction
-:Patient: as pt
+:Guffe: as pt
 :Doctor: as dc
 :Nurse: as nr
 

@@ -7,12 +7,16 @@ persons : age
 persons : address
 persons : phone number
 
+
+class "PROM" as prom
+class "Consultation" as consultation
 class "Patient" as patient
 class "Doctor" as doctor
 class "Nurse" as nurse
 class "Health professional" as HP
 HP : Profession ID
 HP : Work ID
+
 class "Non health professionals" as NHP
 
 
