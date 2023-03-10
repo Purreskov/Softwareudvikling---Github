@@ -2,46 +2,44 @@
 'https://plantuml.com/class-diagram
 
 class "Persons" as persons
-persons : name: String
-persons : age: Int
-persons : address
-persons : phone number
+persons : name: string
+persons : age: int
+persons : address: string
+persons : phone number: int
 
 class "PROM" as prom
-prom : FEV1%
-prom : saturation
-prom : pulse
-prom : subjective health questions
+prom : FEV1: float
+prom : saturation: int
+prom : pulse: int
+prom : subjective health questions: bool
 class "Consultation" as consultation
-consultation : date
-consultation : contact information
+consultation : date: int
+consultation : contact information: string
 class "Patient" as patient
-patient : social security number
-'patient : prescriptions
-'patient : medical record
-patient : relatives
+patient : social security number: int
+patient : relatives: string
 class "Doctor" as doctor
 class "Nurse" as nurse
 class "Medical record" as mr
-mr : medical history
-mr : prescriptions
+mr : medical history: string
+mr : prescriptions: string
 class "Health professional" as HP
-HP : speciality
-HP : Profession ID
-HP : Work ID
-HP : department
+HP : speciality: string
+HP : profession ID: string
+HP : work ID: int
+HP : department: string
 
 
-mr --> patient
+mr -|> patient
 mr -- doctor
 mr -- nurse
-persons <-- HP
+persons <|-- HP
 'persons <-- NHP
-persons <-- patient
-HP <-- doctor
-HP <-- nurse
-doctor "1..1" -- consultation
-nurse "1..2" -- consultation
+persons <|-- patient
+HP <|-- doctor
+HP <|-- nurse
+doctor "1..2" -- consultation
+nurse "1..3" -- consultation
 prom - nurse
 prom -- patient
 doctor -- prom
