@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>378</width>
+    <height>233</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <widget class="QLineEdit" name="lineEdit">
+  <widget class="QLineEdit" name="cpr_input">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -23,10 +23,10 @@
     </rect>
    </property>
    <property name="text">
-    <string>Enter social security number</string>
+    <string/>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="searchbutton">
    <property name="geometry">
     <rect>
      <x>130</x>
@@ -36,7 +36,20 @@
     </rect>
    </property>
    <property name="text">
-    <string>Søg</string>
+    <string>Search</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>50</y>
+     <width>141</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Social security number</string>
    </property>
   </widget>
  </widget>
