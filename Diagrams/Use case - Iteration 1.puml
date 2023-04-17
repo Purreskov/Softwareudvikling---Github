@@ -1,0 +1,42 @@
+@startuml
+left to right direction
+:Patient: as pt
+:Doctor: as dc
+:Nurse: as nr
+
+rectangle KOLNET {
+(Prescription) as ps
+(Create online consultation) as cc
+(Attend online consultation) as ac
+(View report) as VR
+(Write report) as WR
+(Submit PROM) as S.PROM
+(View PROM) as V.PROM
+
+pt - S.PROM #line:red
+pt -- V.PROM #line:red
+pt -- ac #line:red
+pt -- VR #line:red
+dc -- V.PROM #line:blue
+dc -- ps #line:blue
+dc -- WR #line:blue
+dc -- cc #line:blue
+dc -- ac #line:blue
+dc -- VR #line:blue
+V.PROM -- nr
+VR -- nr
+ac -- nr
+cc -- nr
+
+
+ac <. cc : include
+S.PROM .> V.PROM :include
+WR <. ac :include
+ps .> WR: include
+VR <. WR : include
+}
+
+
+
+
+@enduml
