@@ -7,8 +7,9 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-#from main2_widget import Ui_MainWindow
+
 from main3_widget_final import MainWindow
+from login_error_widget import ErrorWidget
 
 
 class Ui_Form(object):
@@ -46,6 +47,11 @@ class Ui_Form(object):
             self.ui2 = MainWindow()
             self.ui2.setupUi(self.main3_widget_final)
             self.main3_widget_final.show()
+        else:
+            self.login_error_widget = QtWidgets.QWidget()
+            self.ui2 = ErrorWidget()
+            self.ui2.setupUi(self.login_error_widget)
+            self.login_error_widget.show()
 
 if __name__ == "__main__":
     import sys

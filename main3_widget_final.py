@@ -8,6 +8,8 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
+#from prom_widget import Ui_PromView
+
 class MainWindow(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
@@ -110,10 +112,10 @@ class MainWindow(object):
         #INDSAT
 
         #def prombutton_clicked(self):
-        #    self.main3_widget = QtWidgets.QWidget()
-        #    self.ui2 = PromView()
-        #    self.ui2.setupUi(self.main3_widget)
-        #    self.main3_widget.show()
+        #    self.prom_widget = QtWidgets.QWidget()
+        #    self.ui2 = Ui_PromView()
+        #    self.ui2.setupUi(self.prom_widget)
+        #    self.prom_widget.show()
 
 
 if __name__ == "__main__":
