@@ -7,7 +7,9 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-from main2_widget import Ui_MainWindow
+#from main2_widget import Ui_MainWindow
+from main3_widget_final import MainWindow
+
 
 class Ui_Form(object):
     def setupUi(self, Form):
@@ -23,10 +25,12 @@ class Ui_Form(object):
         self.label = QtWidgets.QLabel(parent=Form)
         self.label.setGeometry(QtCore.QRect(120, 50, 141, 21))
         self.label.setObjectName("label")
-        #INDSAT
-        self.searchbutton.clicked.connect(self.on_search_button_clicked)
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
+
+        #INDSAT
+        self.searchbutton.clicked.connect(self.on_search_button_clicked)
+
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
@@ -38,10 +42,10 @@ class Ui_Form(object):
     def on_search_button_clicked(self):
         if self.cpr_input.text() == "1234":
             # Create an instance of the main2_widget
-            self.main2_widget = QtWidgets.QWidget()
-            self.ui2 = Ui_MainWindow()
-            self.ui2.setupUi(self.main2_widget)
-            self.main2_widget.show()
+            self.main3_widget_final = QtWidgets.QWidget()
+            self.ui2 = MainWindow()
+            self.ui2.setupUi(self.main3_widget_final)
+            self.main3_widget_final.show()
 
 if __name__ == "__main__":
     import sys
