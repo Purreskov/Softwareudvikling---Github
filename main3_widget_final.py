@@ -8,10 +8,12 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
+#from prom_widget import Ui_PromView
+
 class MainWindow(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(549, 515)
+        Form.resize(510, 500)
         self.verticalLayoutWidget = QtWidgets.QWidget(parent=Form)
         self.verticalLayoutWidget.setGeometry(QtCore.QRect(60, 150, 160, 301))
         self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
@@ -89,7 +91,7 @@ class MainWindow(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
+        Form.setWindowTitle(_translate("Form", "Patient Menu"))
         self.name.setText(_translate("Form", "Name:"))
         self.age.setText(_translate("Form", "Age: "))
         self.telephone.setText(_translate("Form", "Telephone: "))
@@ -110,10 +112,10 @@ class MainWindow(object):
         #INDSAT
 
         #def prombutton_clicked(self):
-        #    self.main3_widget = QtWidgets.QWidget()
-        #    self.ui2 = PromView()
-        #    self.ui2.setupUi(self.main3_widget)
-        #    self.main3_widget.show()
+        #    self.prom_widget = QtWidgets.QWidget()
+        #    self.ui2 = Ui_PromView()
+        #    self.ui2.setupUi(self.prom_widget)
+        #    self.prom_widget.show()
 
 
 if __name__ == "__main__":

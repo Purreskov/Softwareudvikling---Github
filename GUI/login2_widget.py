@@ -7,8 +7,9 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-#from main2_widget import Ui_MainWindow
+
 from main3_widget_final import MainWindow
+from login_error_widget import ErrorWidget
 
 
 class Ui_Form(object):
@@ -34,18 +35,23 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
+        Form.setWindowTitle(_translate("Form", "Lookup patient"))
         self.searchbutton.setText(_translate("Form", "Search"))
         self.label.setText(_translate("Form", "Social security number"))
 
     #INDSAT
     def on_search_button_clicked(self):
-        if self.cpr_input.text() == "1234":
+        if self.cpr_input.text() == "123456-7890":
             # Create an instance of the main2_widget
             self.main3_widget_final = QtWidgets.QWidget()
             self.ui2 = MainWindow()
             self.ui2.setupUi(self.main3_widget_final)
             self.main3_widget_final.show()
+        else:
+            self.login_error_widget = QtWidgets.QWidget()
+            self.ui2 = ErrorWidget()
+            self.ui2.setupUi(self.login_error_widget)
+            self.login_error_widget.show()
 
 if __name__ == "__main__":
     import sys

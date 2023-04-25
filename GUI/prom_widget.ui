@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>PromView</class>
+ <widget class="QWidget" name="PromView">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>725</width>
+    <height>377</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Prom View</string>
+  </property>
+  <widget class="QComboBox" name="comboprom">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>40</y>
+     <width>231</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Registrations for the last 7 days</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Registrations for the last 14 days</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Registrations for the last month</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Registrations for the last year</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>All registrations</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QTreeWidget" name="promtable">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>100</y>
+     <width>691</width>
+     <height>192</height>
+    </rect>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>2000000</width>
+     <height>16777215</height>
+    </size>
+   </property>
+   <property name="indentation">
+    <number>0</number>
+   </property>
+   <property name="rootIsDecorated">
+    <bool>true</bool>
+   </property>
+   <property name="itemsExpandable">
+    <bool>true</bool>
+   </property>
+   <property name="animated">
+    <bool>false</bool>
+   </property>
+   <property name="allColumnsShowFocus">
+    <bool>true</bool>
+   </property>
+   <property name="wordWrap">
+    <bool>false</bool>
+   </property>
+   <property name="headerHidden">
+    <bool>false</bool>
+   </property>
+   <property name="expandsOnDoubleClick">
+    <bool>false</bool>
+   </property>
+   <column>
+    <property name="text">
+     <string>DATE:</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>DATE:</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>DATE:</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>DATE:</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>DATE:</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>DATE:</string>
+    </property>
+   </column>
+   <column>
+    <property name="text">
+     <string>DATE:</string>
+    </property>
+   </column>
+   <item>
+    <property name="text">
+     <string>SHORTNESS OF BREATH:</string>
+    </property>
+    <property name="text">
+     <string>SHORTNESS OF BREATH:</string>
+    </property>
+    <property name="text">
+     <string>SHORTNESS OF BREATH:</string>
+    </property>
+    <property name="text">
+     <string>SHORTNESS OF BREATH:</string>
+    </property>
+    <property name="text">
+     <string>SHORTNESS OF BREATH:</string>
+    </property>
+    <property name="text">
+     <string>SHORTNESS OF BREATH:</string>
+    </property>
+    <property name="text">
+     <string>SHORTNESS OF BREATH:</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>SAT:</string>
+    </property>
+    <property name="text">
+     <string>SAT:</string>
+    </property>
+    <property name="text">
+     <string>SAT:</string>
+    </property>
+    <property name="text">
+     <string>SAT:</string>
+    </property>
+    <property name="text">
+     <string>SAT:</string>
+    </property>
+    <property name="text">
+     <string>SAT:</string>
+    </property>
+    <property name="text">
+     <string>SAT:</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>PULSE:</string>
+    </property>
+    <property name="text">
+     <string>PULSE:</string>
+    </property>
+    <property name="text">
+     <string>PULSE:</string>
+    </property>
+    <property name="text">
+     <string>PULSE:</string>
+    </property>
+    <property name="text">
+     <string>PULSE:</string>
+    </property>
+    <property name="text">
+     <string>PULSE:</string>
+    </property>
+    <property name="text">
+     <string>PULSE:</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>FEV1:</string>
+    </property>
+    <property name="text">
+     <string>FEV1:</string>
+    </property>
+    <property name="text">
+     <string>FEV1:</string>
+    </property>
+    <property name="text">
+     <string>FEV1:</string>
+    </property>
+    <property name="text">
+     <string>FEV1:</string>
+    </property>
+    <property name="text">
+     <string>FEV1:</string>
+    </property>
+    <property name="text">
+     <string>FEV1:</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>COUGHING:</string>
+    </property>
+    <property name="text">
+     <string>COUGHING:</string>
+    </property>
+    <property name="text">
+     <string>COUGHING:</string>
+    </property>
+    <property name="text">
+     <string>COUGHING:</string>
+    </property>
+    <property name="text">
+     <string>COUGHING:</string>
+    </property>
+    <property name="text">
+     <string>COUGHING:</string>
+    </property>
+    <property name="text">
+     <string>COUGHING:</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>COLORED MUCOS:</string>
+    </property>
+    <property name="text">
+     <string>COLORED MUCOS</string>
+    </property>
+    <property name="text">
+     <string>COLORED MUCOS</string>
+    </property>
+    <property name="text">
+     <string>COLORED MUCOS:</string>
+    </property>
+    <property name="text">
+     <string>COLORED MUCOS:</string>
+    </property>
+    <property name="text">
+     <string>COLORED MUCOS:</string>
+    </property>
+    <property name="text">
+     <string>COLORED MUCOS:</string>
+    </property>
+   </item>
+  </widget>
+  <widget class="QPushButton" name="back_button">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>113</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Back</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
