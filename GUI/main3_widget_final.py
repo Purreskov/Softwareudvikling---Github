@@ -93,7 +93,7 @@ class MainWindow(object):
 
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Patient Menu"))
-        self.name.setText(_translate("Form", f"Name: {select('FirstName', 'Patients', 'CPRnumber', str(cpr))[0][0]}"))
+        self.name.setText(_translate("Form", f"Name: {select('Name', 'Patients', 'CPRnumber', str(cpr))[0][0]}"))
         self.age.setText(_translate("Form", f"Age: {select('Age', 'Patients', 'CPRnumber', str(cpr))[0][0]}"))
         self.telephone.setText(_translate("Form", f"Telephone: {select('Telephone', 'Patients', 'CPRnumber', str(cpr))[0][0]} "))
         self.weight.setText(_translate("Form", f"Weight: {select('Weight', 'Patients', 'CPRnumber', str(cpr))[0][0]}"))
