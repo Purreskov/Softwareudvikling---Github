@@ -9,6 +9,7 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 from GUI.Pycharm.create_user_widget import Ui_create_user_menu
+from GUI.Pycharm.login2_widget import Ui_Form
 from GUI.Pycharm.patient_overview_widget import Ui_patient_overview
 
 
@@ -44,9 +45,9 @@ class Ui_main_menu(object):
     # INDSAT
         self.create_user.clicked.connect(self.create_user_clicked)
         self.edit_user.clicked.connect(self.edit_user_clicked)
+        self.lookup_user.clicked.connect(self.lookup_user_clicked)
 
     # INDSAT
-
     def create_user_clicked(self):
         self.create_user_widget= QtWidgets.QWidget()
         self.ui2 = Ui_create_user_menu()
@@ -58,6 +59,13 @@ class Ui_main_menu(object):
         self.ui2 = Ui_patient_overview()
         self.ui2.setupUi(self.patient_overview_widget)
         self.patient_overview_widget.show()
+
+    def lookup_user_clicked(self):
+        self.login2_widget = QtWidgets.QWidget()
+        self.ui2 = Ui_Form()
+        self.ui2.setupUi(self.login2_widget)
+        self.login2_widget.show()
+
     def retranslateUi(self, main_menu):
         _translate = QtCore.QCoreApplication.translate
         main_menu.setWindowTitle(_translate("main_menu", "Form"))
