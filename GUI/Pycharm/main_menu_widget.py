@@ -8,6 +8,9 @@
 
 from PyQt6 import QtCore, QtGui, QtWidgets
 
+from GUI.Pycharm.create_user_widget import Ui_create_user_menu
+from GUI.Pycharm.patient_overview_widget import Ui_patient_overview
+
 
 class Ui_main_menu(object):
     def setupUi(self, main_menu):
@@ -38,6 +41,23 @@ class Ui_main_menu(object):
         self.retranslateUi(main_menu)
         QtCore.QMetaObject.connectSlotsByName(main_menu)
 
+    # INDSAT
+        self.create_user.clicked.connect(self.create_user_clicked)
+        self.edit_user.clicked.connect(self.edit_user_clicked)
+
+    # INDSAT
+
+    def create_user_clicked(self):
+        self.create_user_widget= QtWidgets.QWidget()
+        self.ui2 = Ui_create_user_menu()
+        self.ui2.setupUi(self.create_user_widget)
+        self.create_user_widget.show()
+
+    def edit_user_clicked(self):
+        self.patient_overview_widget = QtWidgets.QWidget()
+        self.ui2 = Ui_patient_overview()
+        self.ui2.setupUi(self.patient_overview_widget)
+        self.patient_overview_widget.show()
     def retranslateUi(self, main_menu):
         _translate = QtCore.QCoreApplication.translate
         main_menu.setWindowTitle(_translate("main_menu", "Form"))
