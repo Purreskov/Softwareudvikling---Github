@@ -93,10 +93,10 @@ class MainWindow(object):
 
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Patient Menu"))
-        self.name.setText(_translate("Form", f"Name: {select('Name', 'Patients', 'CPRnumber', str(cpr))[0][0]}"))
-        self.age.setText(_translate("Form", f"Age: {select('Age', 'Patients', 'CPRnumber', str(cpr))[0][0]}"))
-        self.telephone.setText(_translate("Form", f"Telephone: {select('Telephone', 'Patients', 'CPRnumber', str(cpr))[0][0]} "))
-        self.weight.setText(_translate("Form", f"Weight: {select('Weight', 'Patients', 'CPRnumber', str(cpr))[0][0]}"))
+        self.name.setText(_translate("Form", f"Name: {select('name', 'Patients', 'cpr', str(cpr))[0][0]}"))
+        self.age.setText(_translate("Form", f"Age: {select('age', 'Patients', 'cpr', str(cpr))[0][0]}"))
+        self.telephone.setText(_translate("Form", f"Telephone: {select('telephone', 'Patients', 'cpr', str(cpr))[0][0]} "))
+        self.weight.setText(_translate("Form", f"Weight: {select('Weight', 'Patients', 'cpr', str(cpr))[0][0]}"))
         self.comorbidities.setText(_translate("Form", "Comorbidities:"))
         self.medicine.setText(_translate("Form", "Medicine:"))
         self.fev1.setText(_translate("Form", "FEV1:"))
