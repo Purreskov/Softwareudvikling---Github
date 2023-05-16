@@ -1,5 +1,6 @@
 import mysql.connector
 from mysql.connector import Error
+from User import User
 
 try:
     connection = mysql.connector.connect(host='mysql-db.caprover.diplomportal.dk',
@@ -23,3 +24,12 @@ except Error as e:
     print("Error while connecting to MySQL", e)
 
 
+
+def createUser(cpr, name, telephone, age, weight, fev1, GOLD, MRC):
+    user = User(cpr, name, telephone, age, weight, fev1, GOLD, MRC)
+    cursor = connection.cursor()
+    query = "INSERT INTO Patients (cpr, name, telephone, age, weight, FEV1, GOLD, MRC) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+    values = (user.cpr, user.name, user.telephone, user.age, user.weight, user.fev1, user.GOLD, user.MRC)
+    cursor.execute(query, values)
+    connection.commit()
+    cursor.close()
