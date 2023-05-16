@@ -25,9 +25,14 @@ class Ui_patient_overview(object):
         self.delete_button.setObjectName("delete_button")
         self.retranslateUi(patient_overview)
         QtCore.QMetaObject.connectSlotsByName(patient_overview)
+
+        #load the function loaddata upon opening the widget
         self.loaddata()
+
         # Connect the deletePatient function to the delete_button's clicked signal
         self.delete_button.clicked.connect(self.deletePatient)
+
+        # Connect the updatePatient function to the update_user_button's clicked signal
         self.update_user_button.clicked.connect(self.updatePatient)
 
     def retranslateUi(self, patient_overview):
