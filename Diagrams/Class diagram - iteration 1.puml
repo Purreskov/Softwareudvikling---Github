@@ -6,6 +6,7 @@ persons : name: string
 persons : age: int
 persons : address: string
 persons : phone number: int
+persons : social security number: int
 
 class "PROM" as prom
 prom : FEV1: float
@@ -18,7 +19,6 @@ consultation : date: int
 consultation : contact information: string
 
 class "Patient" as patient
-patient : social security number: int
 patient : relatives: string
 
 class "Doctor" as doctor
@@ -52,4 +52,5 @@ consultation --*MW
 CP --* MW
 WR --* MW
 login --> MW
+patient <|-- prom
 @enduml
