@@ -26,13 +26,13 @@ class Ui_patient_overview(object):
         self.retranslateUi(patient_overview)
         QtCore.QMetaObject.connectSlotsByName(patient_overview)
 
-        #load the function loaddata upon opening the widget
+
         self.loaddata()
 
-        # Connect the deletePatient function to the delete_button's clicked signal
+
         self.delete_button.clicked.connect(self.deletePatient)
 
-        # Connect the updatePatient function to the update_user_button's clicked signal
+
         self.update_user_button.clicked.connect(self.updatePatient)
 
     def retranslateUi(self, patient_overview):
@@ -64,17 +64,17 @@ class Ui_patient_overview(object):
 
         if selected_row >= 0:
             patient_id = self.tableWidget.item(selected_row,
-                                               1).text()  # Assuming the patient ID is in the second column
+                                               1).text()
 
             cur = connection.cursor()
 
             try:
-                # Delete from Patients table
+
                 sql_query_patients = "DELETE FROM Patients WHERE Patient_ID = %s"
                 cur.execute(sql_query_patients, (patient_id,))
                 connection.commit()
 
-                # Delete from Person table
+
                 sql_query_person = "DELETE FROM Person WHERE cpr IN (SELECT cpr FROM Patients WHERE Patient_ID = %s)"
                 cur.execute(sql_query_person, (patient_id,))
                 connection.commit()
