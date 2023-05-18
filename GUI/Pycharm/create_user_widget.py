@@ -124,7 +124,7 @@ class Ui_create_user_menu(object):
 
         if not cpr or not name or not telephone or not age or not weight or not fev1 or not GOLD or not MRC:
             QMessageBox.warning(
-                QtWidgets.QWidget(),  # Set the parent as a new QWidget instance
+                QtWidgets.QWidget(),
                 'Error',
                 'Please fill out all fields'
             )
@@ -141,7 +141,7 @@ class Ui_create_user_menu(object):
             self.gold_create.setText('')
             self.mrc_create.setText('')
             QMessageBox.information(
-                create_user_menu,  # Use create_user_menu as the parent
+                create_user_menu,
                 'Success',
                 'User created successfully!',
                 QMessageBox.StandardButton.Ok
