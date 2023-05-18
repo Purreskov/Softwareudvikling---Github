@@ -88,9 +88,9 @@ class MainWindow(object):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Patient Menu"))
         self.cpr.setText(_translate("Form", f"CPR: {select('cpr', 'Patients', 'cpr', str(cpr))[0][0]}"))
-        self.name.setText(_translate("Form", f"Name: {select('name', 'Patients', 'cpr', str(cpr))[0][0]}"))
-        self.age.setText(_translate("Form", f"Age: {select('age', 'Patients', 'cpr', str(cpr))[0][0]}"))
-        self.telephone.setText(_translate("Form", f"Telephone: {select('telephone', 'Patients', 'cpr', str(cpr))[0][0]} "))
+        self.name.setText(_translate("Form", f"Name: {select('name', 'Person', 'cpr', str(cpr))[0][0]}"))
+        self.age.setText(_translate("Form", f"Age: {select('age', 'Person', 'cpr', str(cpr))[0][0]}"))
+        self.telephone.setText(_translate("Form", f"Telephone: {select('telephone', 'Person', 'cpr', str(cpr))[0][0]} "))
         self.weight.setText(_translate("Form", f"Weight: {select('Weight', 'Patients', 'cpr', str(cpr))[0][0]}"))
         self.fev1.setText(_translate("Form", f"FEV1: {select('fev1', 'Patients', 'cpr', str(cpr))[0][0]}"))
         self.gold.setText(_translate("Form", f"GOLD: {select('GOLD', 'Patients', 'cpr', str(cpr))[0][0]}"))
