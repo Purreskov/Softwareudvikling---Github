@@ -1,0 +1,73 @@
+@startuml
+'https://plantuml.com/class-diagram
+title Class Diagram: KOLNET
+
+class "Persons" as persons
+persons : name: string
+persons : age: int
+persons : address: string
+persons : phone number: int
+persons : social security number: int
+
+class "PROM" as prom
+prom : FEV1: float
+prom : saturation: int
+prom : pulse: int
+prom : mucos: bool
+prom : health questions: bool
+
+class "Patient" as patient
+patient : relatives: string
+
+class "Doctor" as doctor
+
+class "Nurse" as nurse
+
+class "Health professional" as HP
+HP : speciality: string
+HP : profession ID: string
+HP : work ID: int
+HP : department: string
+
+interface "Main Window" as MW
+MW : Create user()
+MW : Edit user()
+MW : Delete user()
+
+
+class "Login" as login
+
+class "Look up user" as LU
+LU : Create consultation()
+LU : Create prescription()
+LU : Write report()
+LU : View Prom()
+
+package Database_HP <<Database>> {
+class "DB Health professional" as db_hp
+}
+db_hp : Deny Access()
+db_hp : Grant Access()
+
+package Database_Patient <<Database>> {
+class "DB Patient" as db_p
+}
+db_p : Deny Access()
+db_p : Grant Access()
+
+login --> prom
+db_p - (login, prom)
+persons <|- HP
+persons <|-- patient
+db_p -- prom
+HP <|-- doctor
+HP <|-- nurse
+doctor "1  "--> login
+nurse "1    " --> login
+patient "1"--> login
+login --> MW
+prom -> MW
+MW -> LU
+(login, MW) - db_hp
+
+@enduml

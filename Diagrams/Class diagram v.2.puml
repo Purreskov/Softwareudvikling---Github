@@ -14,20 +14,12 @@ prom : saturation: int
 prom : pulse: int
 prom : subjective health questions: bool
 
-class "Create Consultation" as consultation
-consultation : date: int
-consultation : contact information: string
-
 class "Patient" as patient
 patient : relatives: string
 
 class "Doctor" as doctor
 
 class "Nurse" as nurse
-
-class "Write Report" as WR
-WR : medical history: string
-WR : prescriptions: string
 
 class "Health professional" as HP
 HP : speciality: string
@@ -36,21 +28,26 @@ HP : work ID: int
 HP : department: string
 
 class "Main Window" as MW
-
-class "Create prescription" as CP
+MW : Create prescription ()
+MW : Write report()
+MW : Create consultation()
 
 class "Login" as login
 
-persons <|-- HP
+class "Database" as db
+db : Deny Access()
+db : Grant Access()
+
+persons <|- HP
 persons <|-- patient
 HP <|-- doctor
 HP <|-- nurse
 doctor "1"--> login
 nurse "1" --> login
 prom --* MW
-consultation --*MW
-CP --* MW
-WR --* MW
-login --> MW
+db . (login,MW)
+db -- MW
+prom - db
+
 patient "1..1  " <|-- "0..* " prom
 @enduml
