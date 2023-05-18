@@ -8,7 +8,7 @@ class User_Patients:
         self.MRC = MRC
 
 class User_Person:
-    def __init__(self, cpr, name, telephone, age):
+    def __init__(self, name, age, telephone, cpr):
 
         self.cpr = cpr
         self.name = name

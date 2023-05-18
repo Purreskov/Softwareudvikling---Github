@@ -44,7 +44,7 @@ class Ui_patient_overview(object):
 
     def loaddata(self):
         cur = connection.cursor()
-        sql_query = "SELECT * FROM Patients"
+        sql_query = "SELECT pa.cpr, pa.patient_id, pe.age, pe.name, pe.telephone, pa.Weight, pa.FEV1, pa.GOLD, pa.MRC FROM Patients AS pa JOIN Person AS pe ON pa.cpr = pe.cpr"
         cur.execute(sql_query)
         rows = cur.fetchall()
         self.tableWidget.setRowCount(len(rows))
