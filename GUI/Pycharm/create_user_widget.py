@@ -11,6 +11,7 @@ from PyQt6.QtWidgets import QMessageBox, QLabel
 
 class Ui_create_user_menu(object):
     def setupUi(self, create_user_menu):
+        self.create_user_menu = create_user_menu
         create_user_menu.setObjectName("create_user_menu")
         create_user_menu.resize(411, 381)
         self.formLayoutWidget = QtWidgets.QWidget(parent=create_user_menu)
@@ -124,7 +125,7 @@ class Ui_create_user_menu(object):
 
         if not cpr or not name or not telephone or not age or not weight or not fev1 or not GOLD or not MRC:
             QMessageBox.warning(
-                QtWidgets.QWidget(),  # Set the parent as a new QWidget instance
+                QtWidgets.QWidget(),
                 'Error',
                 'Please fill out all fields'
             )
@@ -141,15 +142,11 @@ class Ui_create_user_menu(object):
             self.gold_create.setText('')
             self.mrc_create.setText('')
             QMessageBox.information(
-                create_user_menu,  # Use create_user_menu as the parent
+                self.create_user_menu,
                 'Success',
                 'User created successfully!',
                 QMessageBox.StandardButton.Ok
             )
-
-
-
-
 
 if __name__ == "__main__":
     import sys

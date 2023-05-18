@@ -26,13 +26,13 @@ class Ui_patient_overview(object):
         self.retranslateUi(patient_overview)
         QtCore.QMetaObject.connectSlotsByName(patient_overview)
 
-        #load the function loaddata upon opening the widget
+
         self.loaddata()
 
-        # Connect the deletePatient function to the delete_button's clicked signal
+
         self.delete_button.clicked.connect(self.deletePatient)
 
-        # Connect the updatePatient function to the update_user_button's clicked signal
+
         self.update_user_button.clicked.connect(self.updatePatient)
 
     def retranslateUi(self, patient_overview):
@@ -44,7 +44,7 @@ class Ui_patient_overview(object):
 
     def loaddata(self):
         cur = connection.cursor()
-        sql_query = "SELECT * FROM Patients"
+        sql_query = "SELECT pa.cpr, pa.patient_id, pe.age, pe.name, pe.telephone, pa.Weight, pa.FEV1, pa.GOLD, pa.MRC FROM Patients AS pa JOIN Person AS pe ON pa.cpr = pe.cpr"
         cur.execute(sql_query)
         rows = cur.fetchall()
         self.tableWidget.setRowCount(len(rows))
@@ -61,17 +61,31 @@ class Ui_patient_overview(object):
 
     def deletePatient(self):
         selected_row = self.tableWidget.currentRow()
+
         if selected_row >= 0:
             patient_id = self.tableWidget.item(selected_row,
-                                               1).text()  # Assuming the patient ID is in the second column
+                                               1).text()
+
             cur = connection.cursor()
-            sql_query = "DELETE FROM Patients WHERE Patient_ID = %s"
-            cur.execute(sql_query, (patient_id,))
-            connection.commit()
-            self.loaddata()
-            QtWidgets.QMessageBox.information(None, "Success", "Patient deleted successfully.")
+
+            try:
+
+                sql_query_patients = "DELETE FROM Patients WHERE Patient_ID = %s"
+                cur.execute(sql_query_patients, (patient_id,))
+                connection.commit()
+
+
+                sql_query_person = "DELETE FROM Person WHERE cpr IN (SELECT cpr FROM Patients WHERE Patient_ID = %s)"
+                cur.execute(sql_query_person, (patient_id,))
+                connection.commit()
+
+                self.loaddata()
+                QMessageBox.information(None, "Success", "Patient deleted successfully.")
+            except Exception as e:
+                connection.rollback()
+                QMessageBox.warning(None, "Error", f"Failed to delete patient:\n{str(e)}")
         else:
-            QtWidgets.QMessageBox.warning(None, "Warning", "Please select a patient to delete.")
+            QMessageBox.warning(None, "Warning", "Please select a patient to delete.")
 
     def updatePatient(self):
         selected_row = self.tableWidget.currentRow()
@@ -94,10 +108,12 @@ class Ui_patient_overview(object):
                 column_name = self.tableWidget.horizontalHeaderItem(selected_column).text()
 
                 cur = connection.cursor()
-                sql_query = f"UPDATE Patients SET {column_name} = %s WHERE Patient_ID = %s"
+                sql_query = f"UPDATE Patients AS pa JOIN Person AS pe ON pa.cpr = pe.cpr SET {column_name} = %s, {column_name} = %s WHERE pa.Patient_ID = %s"
+
+
 
                 try:
-                    cur.execute(sql_query, (new_value, patient_id))
+                    cur.execute(sql_query, (new_value, new_value, patient_id))
                     connection.commit()
                     QMessageBox.information(
                         self.tableWidget,
