@@ -1,53 +1,89 @@
 @startuml
 'https://plantuml.com/class-diagram
+title Class Diagram: KOLNET
 
-class "Persons" as persons
-persons : name: string
-persons : age: int
-persons : address: string
-persons : phone number: int
-persons : social security number: int
+class "Persons" as persons{
+name: string
+age: int
+address: string
+phone number: int
+social security number: int
+}
 
-class "PROM" as prom
-prom : FEV1: float
-prom : saturation: int
-prom : pulse: int
-prom : subjective health questions: bool
+class "PROM" as prom {
+FEV1: float
+saturation: int
+pulse: int
+mucos: bool
+health questions: bool
+}
 
-class "Patient" as patient
-patient : relatives: string
+class "Patient" as patient{
+relatives: string
+mrc: int
+weight: int
+fev1: int
+gold: int
++id: int
+}
 
 class "Doctor" as doctor
 
 class "Nurse" as nurse
 
-class "Health professional" as HP
-HP : speciality: string
-HP : profession ID: string
-HP : work ID: int
-HP : department: string
+class "Health professional" as HP {
+speciality: string
+profession ID: string
+work ID: int
+department: string
+}
 
-class "Main Window" as MW
-MW : Create prescription ()
-MW : Write report()
-MW : Create consultation()
+interface "Main Window" as MW {
+Create user()
+Edit user()
+Delete user()
+}
 
-class "Login" as login
+class "Login" as login{
+user_id: string
+password: string
+Deny Access()
+Grant Access()
+}
 
-class "Database" as db
-db : Deny Access()
-db : Grant Access()
 
-persons <|- HP
-persons <|-- patient
-HP <|-- doctor
-HP <|-- nurse
-doctor "1"--> login
-nurse "1" --> login
-prom --* MW
-db . (login,MW)
-db -- MW
-prom - db
+class "Look up user" as LU
+LU : Create consultation()
+LU : Create prescription()
+LU : Write report()
+LU : View Prom()
 
-patient "1..1  " <|-- "0..* " prom
+package Database <<Database>> {
+class "DB" as db_hp
+}
+db_hp : Patients: table
+db_hp : Person: table
+db_hp : testresults: table
+db_hp : Health Professionals: table
+db_hp : PROM: schema
+db_hp : connect()
+
+
+
+persons "1..1  "<|- HP
+persons "1..1  "<|-- "1..1  "patient
+HP "1..1    "  <|-- "1..1    "doctor
+HP "  1..1    "  <|-- "1..1    " nurse
+doctor " 1..* "--> "1..1" login
+nurse " 1..*"--> " 1..1" login
+patient " 1..*"--> "1..1  " login
+login -->  MW
+MW -> LU
+MW --> db_hp
+MW --> prom
+login -> db_hp
+LU --> prom
+db_hp <- LU
+prom ----> db_hp
+
 @enduml

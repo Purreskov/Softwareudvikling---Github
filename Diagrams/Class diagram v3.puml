@@ -2,40 +2,55 @@
 'https://plantuml.com/class-diagram
 title Class Diagram: KOLNET
 
-class "Persons" as persons
-persons : name: string
-persons : age: int
-persons : address: string
-persons : phone number: int
-persons : social security number: int
+class "Persons" as persons{
+name: string
+age: int
+address: string
+phone number: int
+social security number: int
+}
 
-class "PROM" as prom
-prom : FEV1: float
-prom : saturation: int
-prom : pulse: int
-prom : mucos: bool
-prom : health questions: bool
+class "PROM" as prom {
+FEV1: float
+saturation: int
+pulse: int
+mucos: bool
+health questions: bool
+}
 
-class "Patient" as patient
-patient : relatives: string
+class "Patient" as patient{
+relatives: string
+mrc: int
+weight: int
+fev1: int
+gold: int
++id: int
+}
 
 class "Doctor" as doctor
 
 class "Nurse" as nurse
 
-class "Health professional" as HP
-HP : speciality: string
-HP : profession ID: string
-HP : work ID: int
-HP : department: string
+class "Health professional" as HP {
+speciality: string
+profession ID: string
+work ID: int
+department: string
+}
 
-interface "Main Window" as MW
-MW : Create user()
-MW : Edit user()
-MW : Delete user()
-
+interface "Main Window" as MW {
+Create user()
+Edit user()
+Delete user()
+}
 
 class "Login" as login
+login : user_id
+login : password
+login : Deny Access()
+login : Grant Access()
+
+
 
 class "Look up user" as LU
 LU : Create consultation()
@@ -43,31 +58,38 @@ LU : Create prescription()
 LU : Write report()
 LU : View Prom()
 
-package Database_HP <<Database>> {
-class "DB Health professional" as db_hp
+package Database <<Database>> {
+class "DB" as db_hp
 }
-db_hp : Deny Access()
-db_hp : Grant Access()
+db_hp : Patients: table
+db_hp : Person: table
+db_hp : testresults: table
+db_hp : Health Professionals: table
+db_hp : PROM: schema
+db_hp : connect()
 
-package Database_Patient <<Database>> {
-class "DB Patient" as db_p
-}
-db_p : Deny Access()
-db_p : Grant Access()
+'package Database_Patient <<Database>> {
+'class "DB Patient" as db_p
+'}
+'db_p : Deny Access()
+'db_p : Grant Access()
 
-login --> prom
-db_p - (login, prom)
-persons <|- HP
-persons <|-- patient
-db_p -- prom
-HP <|-- doctor
-HP <|-- nurse
-doctor "1  "--> login
-nurse "1    " --> login
-patient "1"--> login
-login --> MW
-prom -> MW
+login "Patient login"--> prom
+'db_p - (login, prom)
+persons "1..1  "<|- HP
+persons "1..1  "<|-- "1..1  "patient
+'db_p -- prom
+HP "1..1    "  <|-- "1..1    "doctor
+HP "  1..1    "  <|-- "1..1    " nurse
+doctor " 1..* "--> "1..1" login
+nurse " 1..*"--> " 1..1" login
+patient " 1..*"--> "1..1  " login
+login "Health professional login" -->  MW
+' prom -> MW
 MW -> LU
 (login, MW) - db_hp
+(login, prom) - db_hp
+db_hp <-> LU
+prom -> db_hp
 
 @enduml
